@@ -1,0 +1,13 @@
+cmospwd (5.0+dfsg-2) unstable; urgency=low
+
+  * Include fix for FTBFS on KFreeBSD (Closes: #580673) 
+  * Restrict archs to i386 and amd64, along with their KFreeBSD 
+    counterparts.
+
+ -- Luke Faraone <luke@faraone.cc>  Mon, 10 May 2010 10:54:23 -0400
+
+cmospwd (5.0+dfsg-1) unstable; urgency=low
+
+  * Initial release (Closes: #571942)
+
+ -- Luke Faraone <luke@faraone.cc>  Sun, 28 Feb 2010 13:08:22 -0500

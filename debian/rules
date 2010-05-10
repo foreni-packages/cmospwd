@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/makefile.mk
+
+DEB_SRCDIR = $(CURDIR)/src
+
+# Path to the debian directory
+DEBIAN_DIR := $(shell echo ${MAKEFILE_LIST} | awk '{print $$1}' | xargs dirname )
+UPSTREAM_VERSION ?=$(shell uscan --dehs | sed -n 's/.*<upstream-version>\(.*\)<\/upstream-version>.*/\1/p')
+PACKAGE := $(shell dpkg-parsechangelog | sed -n 's/^Source: //p')
+CURRENT_VERSION ?=$(shell dpkg-parsechangelog | sed -n 's/^Version: \(.*\)+dfsg.*/\1/p')
+
+get-orig-source:
+	cd ${DEBIAN_DIR}/.. && uscan --force-download --upstream-version $(CURRENT_VERSION)
+	tar xf ../$(PACKAGE)-${UPSTREAM_VERSION}.tar.bz2 #${CURDIR}/$(PACKAGE)-${UPSTREAM_VERSION}
+	rm ${CURDIR}/$(PACKAGE)-${UPSTREAM_VERSION}/src/cmospwd
+	tar cf ${CURDIR}/${DEB_SOURCE_PACKAGE}_${UPSTREAM_VERSION}+dfsg.orig.tar $(PACKAGE)-${UPSTREAM_VERSION}/
+	gzip ${CURDIR}/${DEB_SOURCE_PACKAGE}_${UPSTREAM_VERSION}+dfsg.orig.tar
+
+install/cmospwd:: 
+	dh_installdirs usr/sbin
+	install -m 755 src/cmospwd debian/cmospwd/usr/sbin/cmospwd

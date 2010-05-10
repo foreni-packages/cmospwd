@@ -1,0 +1,51 @@
+.TH CMOSPWD 8 "July 6, 2006"
+.SH NAME
+cmospwd \- a cmos/bios password recovery tool
+.SH SYNOPSIS
+.B cmospwd
+.RI [ options ] ...
+.SH DESCRIPTION
+This manual page documents briefly the
+.B cmospwd
+command.
+.PP
+.SH OPTIONS
+A summary of options is included below.
+.TP
+.B \-h, \-\-help
+Usage information.
+.TP
+.B /kfr, \-kfr
+french AZERTY keyboard.
+.TP
+.B /kde, \-kde
+German QWERTZ keyboard.
+.TP
+.B /d, \-d
+Dump cmos.
+.TP
+.B /k, \-k
+Kill cmos.
+.TP
+.B /R, \-R
+Force mode.
+.TP
+.B /w <cmos_backup_file>, \-w <cmos_backup_file>, /s <cmos_backup_file>, \-s <cmos_backup_file>
+Write cmos_backup_file.
+.TP
+.B /l <cmos_backup_file>, \-l <cmos_backup_file>
+Load cmos_backup_file.
+.TP
+.B /r <cmos_backup_file>, \-r <cmos_backup_file>
+Restore cmos_backup_file.
+.TP
+.B /m0010011, \-m0010011
+Execute module 3, 6 and 7.
+.SH SEE ALSO
+.BR dmidecode (8).
+.br
+.SH AUTHOR
+cmospwd was written by GRENIER Christophe, grenier@cgsecurity.org.
+.PP
+This manual page was written by Michael Prokop <mika@grml.org>,
+for the Debian project (but may be used by others).

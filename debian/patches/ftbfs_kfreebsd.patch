@@ -1,0 +1,51 @@
+--- a/src/cmospwd.c
++++ b/src/cmospwd.c
+@@ -37,7 +37,11 @@
+ #define HAVE_SYS_IO_H 1
+ #endif
+ 
+-#ifdef __FreeBSD__
++#if defined(__FreeBSD__) && ! defined(__FreeBSD_kernel__)
++# define __FreeBSD_kernel__ __FreeBSD__
++#endif
++
++#ifdef __FreeBSD_kernel__
+ #define HAVE_CTYPE_H 1
+ #endif
+ 
+@@ -181,7 +185,7 @@
+ #define GWIOPM_PARAMCOUNT 3                            // for most functions
+ #define GWIOPM_PARAMCOUNT_BYTES GWIOPM_PARAMCOUNT * 4  // for most functions
+ 
+-#elif defined(__FreeBSD__)
++#elif defined(__FreeBSD_kernel__)
+ FILE *cmos_fd;
+ #endif
+ 
+@@ -358,7 +362,7 @@
+ };
+ 
+ 
+-#if defined(__linux__)||defined(__FreeBSD__)||defined(__NetBSD__)||defined(__CYGWIN32__)||defined(__MINGW32__)
++#if defined(__linux__)||defined(__FreeBSD_kernel__)||defined(__NetBSD__)||defined(__CYGWIN32__)||defined(__MINGW32__)
+ static __inline__ void outportb(uint16_t port,uint8_t value)
+ {
+   __asm__ volatile ("outb %0,%1"
+@@ -1471,7 +1475,7 @@
+ 	  perror("i386_iopl");
+ 	  exit(1);
+ 	}
+-#elif defined(__FreeBSD__)
++#elif defined(__FreeBSD_kernel__)
+     cmos_fd = fopen("/dev/io", "r");
+     if(cmos_fd==NULL){
+        perror("fopen /dev/io failed");
+@@ -1485,7 +1489,7 @@
+ {
+ #ifdef __linux__
+   ioperm(PORT_CMOS_0,4*2,0);
+-#elif defined(__FreeBSD__)
++#elif defined(__FreeBSD_kernel__)
+   fclose(cmos_fd);
+ #endif
+ }

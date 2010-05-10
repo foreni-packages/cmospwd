@@ -1,0 +1,21 @@
+Source: cmospwd
+Section: utils
+Priority: optional
+Maintainer: Luke Faraone <luke@faraone.cc>
+Build-Depends: cdbs (>= 0.4.49), debhelper (>= 7)
+Standards-Version: 3.8.4
+DM-Upload-Allowed: yes
+Vcs-Bzr: https://code.launchpad.net/~lfaraone/cmospwd/debian
+Homepage: http://www.cgsecurity.org/wiki/CmosPwd
+
+Package: cmospwd
+Architecture: amd64 i386 kfreebsd-amd64 kfreebsd-i386 
+Depends: ${shlibs:Depends},  ${misc:Depends},
+Description: decrypt BIOS passwords from CMOS
+ CmosPwd is a cross-platform tool to decrypt password stored in CMOS used 
+ to access a computer's BIOS setup.
+ . 
+ This application should work out of the box on most modern systems, but 
+ some more esoteric BIOSes may not be supported or may require additional 
+ steps. 
+ 

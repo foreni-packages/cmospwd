@@ -1,0 +1,3 @@
+version=3
+opts=dversionmangle=s/\+dfsg$// \
+http://www.cgsecurity.org/wiki/CmosPwd http://www.cgsecurity.org/cmospwd-(.*)\.tar\.bz2
