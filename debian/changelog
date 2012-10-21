@@ -1,3 +1,9 @@
+cmospwd (5.0+dfsg-3) kali; urgency=low
+
+  * Added desktop file for Kali
+
+ -- dookie <dookie@kali.org>  Sun, 21 Oct 2012 13:57:53 -0600
+
 cmospwd (5.0+dfsg-2) unstable; urgency=low
 
   * Include fix for FTBFS on KFreeBSD (Closes: #580673) 

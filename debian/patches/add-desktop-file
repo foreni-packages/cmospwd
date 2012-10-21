@@ -1,0 +1,20 @@
+Index: cmospwd/debian/cmospwd.install
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ cmospwd/debian/cmospwd.install	2012-10-21 13:57:02.000000000 -0600
+@@ -0,0 +1 @@
++debian/kali-cmospwd.desktop usr/share/applications/
+Index: cmospwd/debian/kali-cmospwd.desktop
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ cmospwd/debian/kali-cmospwd.desktop	2012-10-21 13:56:17.000000000 -0600
+@@ -0,0 +1,9 @@
++[Desktop Entry]
++Name=cmospwd
++Encoding=UTF-8
++Exec=sh -c "cmospwd -h;sudo -s"
++Icon=kali-menu.png
++StartupNotify=false
++Terminal=true
++Type=Application
++Categories=04-02-offline-attacks;11-10-password-forensics;
